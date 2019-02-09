@@ -1,29 +1,35 @@
+#import tkinter module for calculator gui 
 from tkinter import *
 
+#global variable declaration
 value=""
 
+#function for input operaton
 def inp(num):
     global value
     value=value+str(num)
     value1.set(value)
     
+#function for clear expression
 def FullClear():
     global value
     value=""
     value1.set(value)
 
+#function to evaluate
 def PressEqual():
     global value
     total=expresion_field.get()
     value=str(eval(total))
     value1.set(value)
 
+#function to delete last value
 def ClearEnd():
     global value
     value=value[:-1]
     value1.set(value)
     
-
+#main function 
 if __name__=="__main__":
 
     win=Tk()
@@ -31,9 +37,11 @@ if __name__=="__main__":
     win.geometry("245x170")
 
     win.title("Standard Calculator")
-
+    
+    #declaration of string variable
     value1=StringVar()
     
+    #entry feild for expression
     expresion_field=Entry(win,textvariable=value1)
     expresion_field.grid(row=0,columnspan=4,ipadx=60)
     value1.set("Enter the expression")
@@ -41,6 +49,7 @@ if __name__=="__main__":
     l=Label(text="WELCOME")
     l.grid(columnspan=4)
 
+    #create buttons
     mod=Button(text="CE",width=7,height=1,command= lambda: ClearEnd())
     mod.grid(row=2,column=0)
 
@@ -97,5 +106,6 @@ if __name__=="__main__":
 
     equal=Button(text="=",width=7,height=1,command= lambda: PressEqual())
     equal.grid(row=6,column=3)
+     
     
     win.mainloop()
